@@ -9,7 +9,7 @@ class Home extends React.Component {
   // return is an array containing all matching ones
   getHouseWithName = (name) => {
     axios
-      .post("http://localhost:8000/read", {
+      .post("http://harvesthru-web.herokuapp.com/read", {
         name: name
       })
       .then((res) => this.setState({ houses: res.data }));
