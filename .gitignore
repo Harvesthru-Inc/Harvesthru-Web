@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 client/node_modules/
+client/build/
 .env
 *.orig
 .idea/
