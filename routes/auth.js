@@ -5,6 +5,7 @@ const _ = require("lodash");
 const { User } = require("../models/user");
 const express = require("express");
 const router = express.Router();
+const config = require("config");
 
 router.post("/", async (req, res) => {
   // First Validate The HTTP Request
@@ -25,7 +26,7 @@ router.post("/", async (req, res) => {
   if (!validPassword) {
     return res.status(400).send("Incorrect email or password.");
   }
-  const token = jwt.sign({ _id: user._id }, "PrivateKey");
+  const token = jwt.sign({ _id: user._id }, config.get("PrivateKey")); // PrivateKey in config/default.json
   res.send(token);
 });
 

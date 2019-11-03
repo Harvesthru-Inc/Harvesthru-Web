@@ -1,3 +1,4 @@
+const config = require("config");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
@@ -6,6 +7,12 @@ const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
 const path = require("path");
+
+// try to access the custom environment variables
+if (!config.get("PrivateKey")) {
+  console.error("FATAL ERROR: PrivateKey is not defined.");
+  process.exit(1);
+}
 
 // connect using mongoose
 const URL = `mongodb+srv://yiyuan:20000805@harvesthru-back-xwbyo.mongodb.net/test?retryWrites=true`;
