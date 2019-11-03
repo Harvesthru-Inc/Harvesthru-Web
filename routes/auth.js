@@ -27,7 +27,11 @@ router.post("/", async (req, res) => {
     return res.status(400).send("Incorrect email or password.");
   }
   const token = jwt.sign({ _id: user._id }, config.get("PrivateKey")); // PrivateKey in config/default.json
-  res.send(token);
+  res.header("x-auth-token", token).send({
+    _id: user._id,
+    name: user.name,
+    email: user.email
+  });
 });
 
 // validate if the user email and password are valid inputs
