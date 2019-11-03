@@ -2,6 +2,7 @@ const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 const users = require("./routes/users");
+const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -18,8 +19,9 @@ mongoose
 app.use(express.static(path.join(__dirname, "client", "build")));
 // parse request body as json
 app.use(express.json());
-// using registration route
+// using custom route
 app.use("/api/users", users);
+app.use("/api/auth", auth);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
