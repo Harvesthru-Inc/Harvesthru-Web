@@ -27,6 +27,7 @@ mongoose
 app.use(express.static(path.join(__dirname, "client", "build")));
 // parse request body as json
 app.use(express.json());
+
 // using custom route
 app.use("/api/users", users);
 app.use("/api/auth", auth);

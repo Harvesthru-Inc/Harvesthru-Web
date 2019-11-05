@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
 });
 
 // validate if the user email and password are valid inputs
-const validate = (req) => {
+const validate = req => {
   const schema = {
     email: Joi.string()
       .min(5)

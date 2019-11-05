@@ -25,6 +25,7 @@ router.post("/", async (req, res) => {
       email: req.body.email,
       password: req.body.password
     });
+    
     // generate a salt(seed) and use that to hash the user password
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
