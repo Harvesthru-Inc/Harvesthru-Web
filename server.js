@@ -9,13 +9,13 @@ const app = express();
 const path = require("path");
 
 // try to access the custom environment variables
-if (!config.get("PrivateKey")) {
+if (!config.get("PRIVATE_KEY")) {
   console.error("FATAL ERROR: PrivateKey is not defined.");
   process.exit(1);
 }
 
 // connect using mongoose
-const URL = `mongodb+srv://yiyuan:20000805@harvesthru-back-xwbyo.mongodb.net/test?retryWrites=true`;
+const URL = config.get("DATABASE_URL");
 
 mongoose
   .connect(URL, { dbName: "authentication" })
@@ -26,6 +26,7 @@ mongoose
 app.use(express.static(path.join(__dirname, "client", "build")));
 // parse request body as json
 app.use(express.json());
+
 // using custom route
 app.use("/api/users", users);
 app.use("/api/auth", auth);

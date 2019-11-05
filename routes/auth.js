@@ -7,6 +7,7 @@ const express = require("express");
 const router = express.Router();
 const config = require("config");
 
+// Custom Authentication Route
 router.post("/", async (req, res) => {
   // First Validate The HTTP Request
   const { error } = validate(req.body);
@@ -25,7 +26,7 @@ router.post("/", async (req, res) => {
   if (!validPassword) {
     return res.status(400).send("Incorrect email or password.");
   }
-  const token = jwt.sign({ _id: user._id }, config.get("PrivateKey")); // PrivateKey in config/default.json
+  const token = jwt.sign({ _id: user._id }, config.get("PRIVATE_KEY")); // PRIVATE_KEY in config/default.json
   res.header("x-auth-token", token).send({
     _id: user._id,
     name: user.name,
@@ -34,7 +35,7 @@ router.post("/", async (req, res) => {
 });
 
 // validate if the user email and password are valid inputs
-const validate = (req) => {
+const validate = req => {
   const schema = {
     email: Joi.string()
       .min(5)
