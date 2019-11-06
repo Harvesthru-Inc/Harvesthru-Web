@@ -28,7 +28,7 @@ class App extends React.Component {
               <Route
                 path="/"
                 component={() => {
-                  return <div>adsfasd</div>;
+                  return <div></div>;
                 }}
               />
             </Switch>

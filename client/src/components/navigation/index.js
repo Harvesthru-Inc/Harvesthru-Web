@@ -30,6 +30,9 @@ class Navbar extends React.Component {
 export default Navbar;
 
 const NavbarContainer = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
   height: 100px;
   width: 100%;
   display: flex;
