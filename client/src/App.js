@@ -1,15 +1,38 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Navbar from "./components/navigation/";
+import Login from "./components/authentication/Login.js";
 
 class App extends React.Component {
+  state = {
+    isLoginOpen: false
+  };
+
+  openLoginPanel = () => {
+    this.setState({ isLoginOpen: true });
+  };
+
+  closeLoginPanel = () => {
+    this.setState({ isLoginOpen: false });
+  };
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Route path="/home" component={Home} />
-          <Route path="/about" component={About} />
+          <div>
+            <Navbar openLoginPanel={this.openLoginPanel} />
+            {this.state.isLoginOpen ? (
+              <Login closeLoginPanel={this.closeLoginPanel} />
+            ) : null}
+            <Switch>
+              <Route
+                path="/"
+                component={() => {
+                  return <div></div>;
+                }}
+              />
+            </Switch>
+          </div>
         </BrowserRouter>
       </div>
     );
