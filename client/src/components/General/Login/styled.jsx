@@ -1,5 +1,5 @@
-import { fadeIn } from "react-animations";
-import styled, { keyframes } from "styled-components";
+import { fadeIn } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 
 const FullPageLayer = styled.div`
   width: 100%;
@@ -34,10 +34,26 @@ const LoginContainer = styled.div`
   animation: 0.8s ${fadeInDownAnimation};
 `;
 
+const LoginWrapper = styled.div`
+  display: flex;
+  align: center;
+  justify: center;
+`;
+
+// To Do (Dennis): Use static image
+const Logo = styled.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #c4c4c4;
+`;
+
 export {
-    FullPageLayer,
-    fadeInAnimation,
-    FullPageFilter,
-    fadeInDownAnimation,
-    LoginContainer
-}
+  FullPageLayer,
+  fadeInAnimation,
+  FullPageFilter,
+  fadeInDownAnimation,
+  LoginContainer,
+  LoginWrapper,
+  Logo
+};

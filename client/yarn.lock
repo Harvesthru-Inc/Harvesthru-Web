@@ -8430,6 +8430,11 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
+redux-form-validators@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/redux-form-validators/-/redux-form-validators-3.3.2.tgz#63102146bf2e5a4bcbc869fb47b6258703d0206d"
+  integrity sha512-P/gav2nabqcqB3KfsjhSqzEpAnRjs7XP5ejMFeOHTBsekmnpb9qKhVid3xV5lJOnLO57pmKm/2POVoI8j+QmTw==
+
 regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.1.0.tgz#ef51e0f0ea4ad424b77bf7cb41f3e015c70a3f0e"
