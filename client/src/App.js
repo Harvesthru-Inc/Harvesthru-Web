@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navbar from "./components/navigation/";
-import Login from "./components/authentication/Login.js";
+import Navbar from "./components/Navigation";
+import Login from "./components/General/Login";
 
 class App extends React.Component {
   state = {

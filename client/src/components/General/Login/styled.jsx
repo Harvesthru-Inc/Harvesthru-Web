@@ -1,26 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-
-class Login extends React.Component {
-  state = {
-    login: true
-  };
-  render() {
-    return (
-      <FullPageLayer>
-        <FullPageFilter
-          onClick={() => {
-            this.props.closeLoginPanel();
-          }}
-        />
-        {this.state.login ? <LoginContainer></LoginContainer> : null}
-      </FullPageLayer>
-    );
-  }
-}
-
-export default Login;
+import styled, { keyframes } from "styled-components";
 
 const FullPageLayer = styled.div`
   width: 100%;
@@ -54,3 +33,11 @@ const LoginContainer = styled.div`
   background: white;
   animation: 0.8s ${fadeInDownAnimation};
 `;
+
+export {
+    FullPageLayer,
+    fadeInAnimation,
+    FullPageFilter,
+    fadeInDownAnimation,
+    LoginContainer
+}
