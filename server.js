@@ -4,6 +4,7 @@ Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
+const fb_auth = require('./routes/fb_auth');
 const express = require("express");
 const app = express();
 const path = require("path");
