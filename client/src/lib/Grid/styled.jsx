@@ -1,6 +1,6 @@
 // Style of grid, row and col
 import styled, { css } from "styled-components";
-import { MaxWidth } from "../.././Styles/utils";
+import { MaxWidth } from "../../Styles/utils";
 import { RowProps, ColProps } from "./interface";
 
 const GridWrapper = styled.div<RowProps>`

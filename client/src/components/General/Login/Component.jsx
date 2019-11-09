@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 
 // import {Col, Row} from '../../../lib/Grid';
 import TextField from '../../../lib/TextField';
-import { Margin } from '../../../lib/Styles/utils';
+import { Margin } from '../../../Styles/utils';
+import { Logo } from '../../../Styles/bases/Identity';
 
 import { Form, Field } from 'react-final-form';
-import { FullPageFilter, FullPageLayer, LoginContainer, Logo } from './styled';
+import { FullPageFilter, FullPageLayer, LoginContainer } from './styled';
 import { emailFormat, emailRequired } from '../../../utils/validationRules';
 import {composeValidators} from '../../../utils/validationRules'
 
@@ -47,7 +48,7 @@ class Login extends Component {
                   </Margin>
                   <Margin top={10} bottom={32}>
                     <Margin top={5}>
-                      <small>Minimum 10 Dai</small>
+                      <small>C</small>
                     </Margin>
                   </Margin>
                   <Margin top={32} bottom={32}>

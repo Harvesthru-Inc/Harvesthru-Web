@@ -40,20 +40,11 @@ const LoginWrapper = styled.div`
   justify: center;
 `;
 
-// To Do (Dennis): Use static image
-const Logo = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #c4c4c4;
-`;
-
 export {
   FullPageLayer,
   fadeInAnimation,
   FullPageFilter,
   fadeInDownAnimation,
   LoginContainer,
-  LoginWrapper,
-  Logo
+  LoginWrapper
 };
