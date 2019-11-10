@@ -65,13 +65,31 @@ const LoginTitleWrapper = styled.div`
   align-items: center;
 `;
 
+const LoginButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 93%;
+`;
+
+const dividerStyle = {
+  color: '#6C6C6C',
+  fontFamily: 'Quicksand',
+  fontStyle: 'normal',
+  fontWeight: 'bold',
+  fontSize: '13px',
+  lineHeight: '16px',
+  textTransform: 'lowercase'
+};
 export {
+  dividerStyle,
   FullPageLayer,
   fadeInAnimation,
   FullPageFilter,
   fadeInDownAnimation,
   FormHelperLink,
   LoginContainer,
+  LoginButtonsWrapper,
   LoginTitleWrapper,
   LoginWrapper
 };

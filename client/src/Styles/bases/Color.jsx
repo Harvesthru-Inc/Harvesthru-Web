@@ -8,7 +8,7 @@ const Color = {
     darkMdBlue: "#3079ec",
     darkBlue: "#3A559F",
     orange: "#fcac42",
-    green: "##92D05A",
+    green: "#92D05A",
     red: "#c61b42"
   };
 

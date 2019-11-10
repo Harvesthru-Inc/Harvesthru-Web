@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navigation';
 import Login from './components/General/Login';
 import NormalizeStyle from './Styles/bases/Normalize';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends React.Component {
   state = {
