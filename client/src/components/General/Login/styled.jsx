@@ -24,7 +24,7 @@ const FullPageFilter = styled.div`
 const fadeInDownAnimation = keyframes`${fadeIn}`;
 const LoginContainer = styled.div`
   width: 450px;
-  height: 600px;
+  height: 640px;
   position: absolute;
   padding: 50px 20px;
   text-align: center;
