@@ -12,7 +12,6 @@ import {
   FormHelperLink,
   FullPageFilter,
   FullPageLayer,
-  LoginButtonsWrapper,
   LoginContainer,
   LoginTitleWrapper
 } from './styled';

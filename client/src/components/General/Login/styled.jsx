@@ -65,13 +65,6 @@ const LoginTitleWrapper = styled.div`
   align-items: center;
 `;
 
-const LoginButtonsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 93%;
-`;
-
 const dividerStyle = {
   color: '#6C6C6C',
   fontFamily: 'Quicksand',
@@ -89,7 +82,6 @@ export {
   fadeInDownAnimation,
   FormHelperLink,
   LoginContainer,
-  LoginButtonsWrapper,
   LoginTitleWrapper,
   LoginWrapper
 };
