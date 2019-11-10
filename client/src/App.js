@@ -1,7 +1,8 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navigation";
-import Login from "./components/General/Login";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navigation';
+import Login from './components/General/Login';
+import NormalizeStyle from './Styles/bases/Normalize';
 
 class App extends React.Component {
   state = {
@@ -18,12 +19,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <NormalizeStyle />
         <BrowserRouter>
           <div>
             <Navbar openLoginPanel={this.openLoginPanel} />
-            {this.state.isLoginOpen ? (
-              <Login closeLoginPanel={this.closeLoginPanel} />
-            ) : null}
+            {this.state.isLoginOpen ? <Login closeLoginPanel={this.closeLoginPanel} /> : null}
             <Switch>
               <Route
                 path="/"
