@@ -22,10 +22,16 @@ const InputWrapper = styled.input`
 `;
 
 const InputLabel = styled.label`
+  color: #000000;
   display: block;
   text-align: left;
+  line-height: 22px
+  margin-left: 4px;
   margin-bottom: 16px;
-  font-size: 16px;
+  font-family: Quicksand;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
 `;
 
 export { InputWrapper, InputLabel };

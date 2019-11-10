@@ -1,4 +1,5 @@
 import { fadeIn } from 'react-animations';
+import Color from '../../../Styles/bases/Color';
 import styled, { keyframes } from 'styled-components';
 
 const FullPageLayer = styled.div`
@@ -21,6 +22,24 @@ const FullPageFilter = styled.div`
   animation: 0.8s ${fadeInAnimation};
 `;
 
+const FormHelperLink = styled.div`
+  font-family: Quicksand;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 17px;
+  text-align: right;
+  a {
+    color: ${Color.grey};
+    &:visited {
+      color: ${Color.darkGrey};
+    }
+    &:hover {
+      color: ${Color.darkGrey};
+    }
+  }
+`;
+
 const fadeInDownAnimation = keyframes`${fadeIn}`;
 const LoginContainer = styled.div`
   width: 450px;
@@ -40,11 +59,19 @@ const LoginWrapper = styled.div`
   justify: center;
 `;
 
+const LoginTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export {
   FullPageLayer,
   fadeInAnimation,
   FullPageFilter,
   fadeInDownAnimation,
+  FormHelperLink,
   LoginContainer,
+  LoginTitleWrapper,
   LoginWrapper
 };

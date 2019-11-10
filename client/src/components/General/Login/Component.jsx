@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Col, Row } from '../../../lib/Grid';
 import TextField from '../../../lib/TextField';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
-
+import { PATH_FORGOT_PASSWORD } from '../../../static/constants/appPath';
 import { Form, Field } from 'react-final-form';
-import { FullPageFilter, FullPageLayer, LoginContainer, LoginWrapper } from './styled';
+import { FormHelperLink, FullPageFilter, FullPageLayer, LoginContainer, LoginTitleWrapper} from './styled';
 import {
   composeValidators,
   emailFormat,
@@ -43,20 +43,22 @@ class Login extends Component {
         />
         {this.state.login ? (
           <LoginContainer>
-            <Logo />
-            <Brand>Harvesthru</Brand>
+            <LoginTitleWrapper>
+                <Logo />
+                <Brand>Harvesthru</Brand>
+            </LoginTitleWrapper>
             <Form
               onSubmit={this.onSubmit}
               render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                   <Margin top={32} bottom={32}>
                     <Row justify="center">
-                      <Col xs={9} lg={10}>
+                      <Col xs={12} lg={12}>
                         <Field
                           name="email"
                           validate={composeValidators(emailFormat, emailRequired)}
                           render={({ input, meta }) => (
-                            <div>
+                            <React.Fragment>
                               <TextField
                                 label="Email Address"
                                 placeholder="You email address"
@@ -65,7 +67,7 @@ class Login extends Component {
                                 {...meta}
                               />
                               {meta.touched && meta.error}
-                            </div>
+                            </React.Fragment>
                           )}
                         />
                       </Col>
@@ -73,7 +75,7 @@ class Login extends Component {
                   </Margin>
                   <Margin top={32} bottom={32}>
                     <Row justify="center">
-                      <Col xs={9} lg={10}>
+                      <Col xs={12} lg={12}>
                         <Field
                           name="password"
                           // Note: the order of validators matter
@@ -95,6 +97,9 @@ class Login extends Component {
                             </React.Fragment>
                           )}
                         />
+                        <FormHelperLink>
+                          <Link to={PATH_FORGOT_PASSWORD}>Forgot your password?</Link>
+                        </FormHelperLink>
                       </Col>
                     </Row>
                   </Margin>
