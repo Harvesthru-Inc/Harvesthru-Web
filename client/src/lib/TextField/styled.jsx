@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const InputWrapper = styled.input`
   padding: 16px;
   outline: none;
-  border-radius: 2px;
+  border-radius: 10px;
   border: 1px solid #e7ebf2;
   min-height: 38px;
   font-size: 14px;
@@ -23,6 +23,7 @@ const InputWrapper = styled.input`
 
 const InputLabel = styled.label`
   display: block;
+  text-align: left;
   margin-bottom: 16px;
   font-size: 16px;
 `;

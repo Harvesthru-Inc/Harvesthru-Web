@@ -1,14 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-// import {Col, Row} from '../../../lib/Grid';
+import { Col, Row } from '../../../lib/Grid';
 import TextField from '../../../lib/TextField';
 import { Margin } from '../../../Styles/utils';
-import { Logo } from '../../../Styles/bases/Identity';
+import { Logo, Brand } from '../../../Styles/bases/Identity';
 
 import { Form, Field } from 'react-final-form';
-import { FullPageFilter, FullPageLayer, LoginContainer } from './styled';
-import { emailFormat, emailRequired } from '../../../utils/validationRules';
-import {composeValidators} from '../../../utils/validationRules'
+import { FullPageFilter, FullPageLayer, LoginContainer, LoginWrapper } from './styled';
+import {
+  composeValidators,
+  emailFormat,
+  emailRequired,
+  passwordFormat,
+  passwordLength,
+  passwordRequired
+} from '../../../utils/validationRules';
 
 class Login extends Component {
   state = {
@@ -38,36 +44,59 @@ class Login extends Component {
         {this.state.login ? (
           <LoginContainer>
             <Logo />
+            <Brand>Harvesthru</Brand>
             <Form
               onSubmit={this.onSubmit}
               render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <h5>Complete Your Investment</h5>
-                  <Margin top={40}>
-                    <h6>Investment Amount</h6>
-                  </Margin>
-                  <Margin top={10} bottom={32}>
-                    <Margin top={5}>
-                      <small>C</small>
-                    </Margin>
+                  <Margin top={32} bottom={32}>
+                    <Row justify="center">
+                      <Col xs={9} lg={10}>
+                        <Field
+                          name="email"
+                          validate={composeValidators(emailFormat, emailRequired)}
+                          render={({ input, meta }) => (
+                            <div>
+                              <TextField
+                                label="Email Address"
+                                placeholder="You email address"
+                                autoFocus={true}
+                                {...input}
+                                {...meta}
+                              />
+                              {meta.touched && meta.error}
+                            </div>
+                          )}
+                        />
+                      </Col>
+                    </Row>
                   </Margin>
                   <Margin top={32} bottom={32}>
-                    <Field
-                      name="Email Address"
-                      validate={composeValidators(emailFormat, emailRequired)}
-                      render={({ input, meta }) => (
-                        <div>
-                          <TextField
-                            label="Email"
-                            placeholder="Email Address"
-                            autoFocus={true}
-                            {...input}
-                            {...meta}
-                          />
-                          {meta.touched && meta.error}
-                        </div>
-                      )}
-                    />
+                    <Row justify="center">
+                      <Col xs={9} lg={10}>
+                        <Field
+                          name="password"
+                          // Note: the order of validators matter
+                          validate={composeValidators(
+                            passwordRequired,
+                            passwordLength,
+                            passwordFormat
+                          )}
+                          render={({ input, meta }) => (
+                            <React.Fragment>
+                              <TextField
+                                label="Password"
+                                placeholder="You password"
+                                autoFocus={true}
+                                {...input}
+                                {...meta}
+                              />
+                              {meta.touched && meta.error}
+                            </React.Fragment>
+                          )}
+                        />
+                      </Col>
+                    </Row>
                   </Margin>
                 </form>
               )}

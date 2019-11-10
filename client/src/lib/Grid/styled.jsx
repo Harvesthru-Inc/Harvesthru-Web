@@ -1,9 +1,8 @@
 // Style of grid, row and col
 import styled, { css } from "styled-components";
 import { MaxWidth } from "../../Styles/utils";
-import { RowProps, ColProps } from "./interface";
 
-const GridWrapper = styled.div<RowProps>`
+const GridWrapper = styled.div`
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
@@ -28,7 +27,7 @@ const GridWrapper = styled.div<RowProps>`
     `};
 `;
 
-const ColWrapper = styled.div<ColProps>`
+const ColWrapper = styled.div`
   padding: 8px 16px;
 
   ${props =>
