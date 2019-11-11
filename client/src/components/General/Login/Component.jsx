@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Col, Row } from '../../../lib/Grid';
 import Button from '../../../lib/Button';
 import TextField from '../../../lib/TextField';
+import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
 import { PATH_FORGOT_PASSWORD } from '../../../static/constants/appPath';
@@ -72,11 +73,11 @@ class Login extends Component {
                               <TextField
                                 label="Email Address"
                                 placeholder="You email address"
-                                autoFocus={true}
+                                autoFocus={false}
                                 {...input}
                                 {...meta}
                               />
-                              {meta.touched && meta.error}
+                              {meta.touched && <FieldError>{meta.error}</FieldError>}
                             </React.Fragment>
                           )}
                         />
@@ -103,7 +104,7 @@ class Login extends Component {
                                 {...input}
                                 {...meta}
                               />
-                              {meta.touched && meta.error}
+                              {meta.touched && <FieldError>{meta.error}</FieldError>}
                             </React.Fragment>
                           )}
                         />

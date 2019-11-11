@@ -1,3 +1,5 @@
+// To Do (Dennis): we may need to move the Styles folder to the lib.
+
 const Color = {
     white: "#FFFFFF",
     black: "#000000",
@@ -9,7 +11,8 @@ const Color = {
     darkBlue: "#3A559F",
     orange: "#fcac42",
     green: "#92D05A",
-    red: "#c61b42"
+    red: "#b72814",
+    redError: "#b72814"
   };
 
   export default Color;
