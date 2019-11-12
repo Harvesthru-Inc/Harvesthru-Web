@@ -1,6 +1,8 @@
 import React from "react";
 import { InputWrapper, InputLabel } from "./styled";
 
+// To Do(Dennis): to add prop types
+
 const TextField = ({
   placeholder,
   type,
@@ -15,7 +17,7 @@ const TextField = ({
     <InputWrapper
       {...props}
       id={id}
-      type={type ? type : "text"}
+      type={type === "password" ? "password" : "text"}
       placeholder={placeholder}
       autoFocus={autoFocus}
       name={props.name}

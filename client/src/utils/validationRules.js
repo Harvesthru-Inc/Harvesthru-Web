@@ -16,7 +16,7 @@ const composeValidators = (...validators) => value =>
 // Password validation
 const passwordFormat = format({
   with: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]/,
-  message: 'Your password must contain at least one uppercase letter, lowercase letter and digits'
+  message: 'Must contain at least one uppercase letter, lowercase letter and digits'
 });
 const passwordLength = length({
   min: 8,

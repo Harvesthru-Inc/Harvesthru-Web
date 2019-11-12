@@ -67,6 +67,7 @@ class Login extends Component {
                       <Col xs={12} lg={12}>
                         <Field
                           name="email"
+                          type="text"
                           validate={composeValidators(emailFormat, emailRequired)}
                           render={({ input, meta }) => (
                             <React.Fragment>
@@ -89,6 +90,7 @@ class Login extends Component {
                       <Col xs={12} lg={12}>
                         <Field
                           name="password"
+                          type="password"
                           // Note: the order of validators matter
                           validate={composeValidators(
                             passwordRequired,
@@ -168,3 +170,5 @@ class Login extends Component {
 }
 
 export default Login;
+
+// To Do(Dennis): to add prop types
