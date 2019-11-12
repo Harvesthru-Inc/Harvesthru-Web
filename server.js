@@ -1,11 +1,14 @@
+<<<<<<< HEAD
 // Neccessary dependencies
 require("dotenv").config();
+=======
+const config = require('config');
+>>>>>>> frontend
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
-const fb_auth = require('./routes/fb_auth');
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -22,10 +25,11 @@ const URL = process.env.URL;
 mongoose
   .connect(URL, { dbName: "authentication" })
   .then(() => console.log("Now connected to MongoDB!"))
-  .catch((err) => console.error("Something went wrong", err));
+  .catch(err => console.error("Something went wrong", err));
 
 // ... other app.use middleware
 app.use(express.static(path.join(__dirname, "client", "build")));
+
 // parse request body as json
 app.use(express.json());
 
@@ -33,6 +37,7 @@ app.use(express.json());
 app.use("/api/users", users);
 app.use("/api/auth", auth);
 
+// render index for all other paths
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });

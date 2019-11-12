@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User } = require("../models/user");
+const passport = require("passport-facebook");
+const FacebookStrategy = require('passport-oauth').OAuth2Strategy;
 const express = require("express");
 const router = express.Router();
 const config = require("config");
@@ -33,6 +35,19 @@ router.post("/login", async (req, res) => {
     email: user.email
   });
 });
+
+// Facebook Login Route
+router.get("/facebook", passport.authenticate("facebook"));
+
+// Facebook Callback Route
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
 // validate if the user email and password are valid inputs
 const validate = req => {
