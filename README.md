@@ -3,7 +3,8 @@ Harvesthru is a community focused marketplace platform where users can buy, sell
 ### Build Instructions
 1. Clone the repository: `git clone https://github.com/Harvesthru-Inc/Harvesthru-Web`.
 2. Navigate to the directory: `cd Harvesthru-Web`.
-3. Install the necessary dependencies: `npm install`.
+3. Install the necessary dependencies: `npm install` in root directory.
+4. For client side use install neccessary dependencies `npm install` in client directory: 
 4. Create a new `.env` file using `.env.example` as a template: `cp .env.example .env`.
 5. Fill out the `.env`. See the [example file below](#sample-env).
 8. Start the Node app: `npm start`.
