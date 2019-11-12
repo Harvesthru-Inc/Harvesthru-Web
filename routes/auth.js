@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -26,7 +27,7 @@ router.post("/", async (req, res) => {
   if (!validPassword) {
     return res.status(400).send("Incorrect email or password.");
   }
-  const token = jwt.sign({ _id: user._id }, config.get("PrivateKey")); // PrivateKey in config/default.json
+  const token = jwt.sign({ _id: user._id },process.env.privateKey); // PrivateKey in config/default.json
   res.header("x-auth-token", token).send({
     _id: user._id,
     name: user.name,
