@@ -3,9 +3,23 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User } = require("../models/user");
+const passport = require("passport-facebook");
+const FacebookStrategy = require('passport-oauth').OAuth2Strategy;
 const express = require("express");
 const router = express.Router();
 const config = require("config");
+
+passport.use(
+  new FacebookStrategy(
+    {
+      authorizationURL: config.get("FACEBOOK_AUTH_URL"),
+      clientID: config.get("FACEBOOK_APP_ID"),
+      clientSecret: config.get("FACEBOOK_APP_SECRET"),
+      callbackURL: config.get("FACEBOOK_CALLBACK_URL")
+    },
+    function(accessToken, refreshToken, profile, cb) {}
+  )
+);
 
 // Custom Authentication Route
 router.post("/", async (req, res) => {
@@ -33,6 +47,19 @@ router.post("/", async (req, res) => {
     email: user.email
   });
 });
+
+// Facebook Login Route
+router.get("/facebook", passport.authenticate("facebook"));
+
+// Facebook Callback Route
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", { failureRedirect: "/" }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
 // validate if the user email and password are valid inputs
 const validate = req => {
