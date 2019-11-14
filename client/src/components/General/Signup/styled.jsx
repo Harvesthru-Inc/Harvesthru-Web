@@ -29,10 +29,8 @@ const FormHelperLink = styled.div`
   font-weight: bold;
   line-height: 17px;
   text-align: right;
-  cursor: pointer;
   a {
     color: ${Color.grey};
-    cursor: pointer;
     &:visited {
       color: ${Color.darkGrey};
     }
