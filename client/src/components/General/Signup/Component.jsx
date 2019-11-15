@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Col, Row } from '../../../lib/Grid';
 import Button from '../../../lib/Button';
 import TextField from '../../../lib/TextField';
 import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
-import { PATH_FORGOT_PASSWORD } from '../../../static/constants/appPath';
 import { Form, Field } from 'react-final-form';
 import {
-  dividerStyle,
   FormHelperLink,
   FullPageFilter,
   FullPageLayer,
@@ -26,12 +23,12 @@ import {
   passwordRequired
 } from '../../../utils/validationRules';
 
-import { Divider } from 'semantic-ui-react';
 class Signup extends Component {
   state = {
     signup: true,
     emailAddress: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   };
 
   onSubmit = (val) => {
