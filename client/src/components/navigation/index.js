@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import React from "react";
-import "./hover.css";
+import styled from 'styled-components';
+import React from 'react';
+import { Brand, Logo, LogoAndBrand } from '../../Styles/bases/Identity';
+import './hover.css';
 
 class Navbar extends React.Component {
   render() {
@@ -40,35 +41,6 @@ const NavbarContainer = styled.div`
   align-items: center;
   z-index: 10;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
-`;
-
-const LogoAndBrand = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 36px;
-  width: 183px;
-`;
-
-const Logo = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #c4c4c4;
-`;
-
-const Brand = styled.div`
-  width: 132px;
-  height: 30px;
-
-  font-family: Quicksand;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 30px;
-  /* identical to box height */
-
-  color: #92d05a;
 `;
 
 const ItemsContainer = styled.div`
