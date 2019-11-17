@@ -1,8 +1,0 @@
-{
-  "PRIVATE_KEY": "brian",
-  "FACEBOOK_AUTH_URL": "",
-  "FACEBOOK_APP_ID": "793914657709001",
-  "FACEBOOK_APP_SECRET": "134ca28337ff3534d1dc6e4bf9585bed",
-  "FACEBOOK_CALLBACK_URL": "http://localhost:8000/api/auth/facebook/callback",
-  "DATABASE_URL": "mongodb+srv://yiyuan:20000805@harvesthru-back-xwbyo.mongodb.net/test?retryWrites=true"
-}
