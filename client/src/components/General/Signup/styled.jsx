@@ -66,7 +66,6 @@ const LoginTitleWrapper = styled.div`
 `;
 
 export {
-  dividerStyle,
   FullPageLayer,
   // fadeInAnimation,
   FullPageFilter,
