@@ -114,7 +114,7 @@ class Signup extends Component {
                     <Row justify="center">
                       <Col xs={12} lg={12}>
                         <Field
-                          name="password"
+                          name="confirmPassword"
                           type="password"
                           // Note: the order of validators matter
                           validate={composeValidators(
