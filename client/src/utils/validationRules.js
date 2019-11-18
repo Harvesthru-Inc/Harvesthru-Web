@@ -1,17 +1,12 @@
-import {
-    email,
-    format,
-    length,
-    required,
-  } from 'redux-form-validators';
+import { email, format, length, required } from 'redux-form-validators';
 
 // Email validation
 const emailFormat = email({ message: 'Wrong Email Format' });
 const emailRequired = required({ message: 'Email is required' });
 
 // Util Validation
-const composeValidators = (...validators) => value =>
-  validators.reduce((error, validator) => error || validator(value), undefined)
+const composeValidators = (...validators) => (value) =>
+  validators.reduce((error, validator) => error || validator(value), undefined);
 
 // Password validation
 const passwordFormat = format({
@@ -26,12 +21,11 @@ const passwordLength = length({
 });
 const passwordRequired = required({ message: 'Password is required' });
 
-
 export {
-    composeValidators,
-    emailFormat,
-    emailRequired,
-    passwordFormat,
-    passwordLength,
-    passwordRequired
-}
+  composeValidators,
+  emailFormat,
+  emailRequired,
+  passwordFormat,
+  passwordLength,
+  passwordRequired
+};

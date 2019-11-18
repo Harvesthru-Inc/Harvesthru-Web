@@ -6,6 +6,7 @@ import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
 import { Form, Field } from 'react-final-form';
+import { confirmation } from 'redux-form-validators';
 import {
   FormHelperLink,
   FullPageFilter,
@@ -20,7 +21,8 @@ import {
   emailRequired,
   passwordFormat,
   passwordLength,
-  passwordRequired
+  passwordRequired,
+  passwordConfirmed
 } from '../../../utils/validationRules';
 
 class Signup extends Component {
@@ -87,6 +89,7 @@ class Signup extends Component {
                       <Col xs={12} lg={12}>
                         <Field
                           name="password"
+                          label="Password"
                           type="password"
                           // Note: the order of validators matter
                           validate={composeValidators(
@@ -116,12 +119,13 @@ class Signup extends Component {
                         <Field
                           name="confirmPassword"
                           type="password"
+                          label="Confirmation"
                           // Note: the order of validators matter
-                          validate={composeValidators(
-                            passwordRequired,
-                            passwordLength,
-                            passwordFormat
-                          )}
+                          validate={confirmation({
+                            field: 'password',
+                            fieldLabel: 'Password',
+                            message: 'Password should match'
+                          })}
                           render={({ input, meta }) => (
                             <React.Fragment>
                               <TextField
