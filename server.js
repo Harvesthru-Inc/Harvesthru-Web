@@ -1,6 +1,5 @@
 // Neccessary dependencies
 require("dotenv").config();
-const config = require('./config/config');
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
