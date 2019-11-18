@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navigation';
+import Navbar from './components/navigation';
 import Login from './components/General/Login';
 import NormalizeStyle from './Styles/bases/Normalize';
 import 'semantic-ui-css/semantic.min.css';
