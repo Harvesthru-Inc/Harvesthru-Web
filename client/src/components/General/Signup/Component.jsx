@@ -6,7 +6,6 @@ import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
 import { Form, Field } from 'react-final-form';
-import { confirmation } from 'redux-form-validators';
 import {
   FormHelperLink,
   FullPageFilter,
@@ -121,11 +120,7 @@ class Signup extends Component {
                           type="password"
                           label="Confirmation"
                           // Note: the order of validators matter
-                          validate={confirmation({
-                            field: 'password',
-                            fieldLabel: 'Password',
-                            message: 'Password should match'
-                          })}
+                          validate={passwordConfirmed}
                           render={({ input, meta }) => (
                             <React.Fragment>
                               <TextField
