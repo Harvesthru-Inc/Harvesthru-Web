@@ -8,17 +8,40 @@ const TEXT_COLOR = '#4A4A4A';
 const BORDER_COLOR = '#BFB8B8';
 
 class Profile extends React.Component {
+  renderDashboardLinks = links => {
+    // link: {text: string, callback: function}
+    return links.map(link => {
+      return (
+        <DashboardItem
+          onClick={() => {
+            link.callback(link.text);
+          }}
+        >
+          <DashboardText>{link.text}</DashboardText>
+          <RightArrow src={right_arrow} />
+        </DashboardItem>
+      );
+    });
+  };
   render() {
+    const dummyFunction = text => {
+      console.log(`jump to ${text}`);
+    };
+    const links = [
+      { text: 'My Profile', callback: dummyFunction },
+      { text: 'My Listing', callback: dummyFunction },
+      { text: 'Billing', callback: dummyFunction },
+      { text: 'Settings', callback: dummyFunction },
+      { text: 'Log Out', callback: dummyFunction }
+    ];
+
     return (
       <FullPageLayer>
         <DashboardContainer>
           <DashboardTitleBox>
             <DashboardTitle>My Dashboard</DashboardTitle>
           </DashboardTitleBox>
-          <DashboardItem>
-            <DashboardText>My Profile</DashboardText>
-            <RightArrow src={right_arrow} />
-          </DashboardItem>
+          {this.renderDashboardLinks(links)}
         </DashboardContainer>
         <ProfileMainContainer></ProfileMainContainer>
       </FullPageLayer>
