@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/navigation';
 import Login from './components/General/Login';
 import Signup from './components/General/Signup';
+import Profile from './components/Profile'; // only for testing purpose
 import NormalizeStyle from './Styles/bases/Normalize';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -47,9 +48,17 @@ class App extends React.Component {
             ) : null}
             <Switch>
               <Route
+                exact
                 path="/"
                 component={() => {
                   return <div></div>;
+                }}
+              />
+              <Route
+                exact
+                path="/profile"
+                component={() => {
+                  return <Profile />;
                 }}
               />
             </Switch>
