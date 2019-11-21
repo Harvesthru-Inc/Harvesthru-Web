@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import right_arrow from '../../assets/images/right_arrow.png';
+import avatar_placeholder from '../../assets/images/avatar_placeholder.png';
 
 const NAV_HEIGHT = 100;
 const DASHBOARD_WIDTH = 247;
 const TEXT_COLOR = '#4A4A4A';
 const BORDER_COLOR = '#BFB8B8';
+const THEME_GREEN_COLOR = '#9acd00';
+const PERSONAL_INFO_WIDTH = 300;
 
 class Profile extends React.Component {
   renderDashboardLinks = links => {
@@ -43,11 +46,80 @@ class Profile extends React.Component {
           </DashboardTitleBox>
           {this.renderDashboardLinks(links)}
         </DashboardContainer>
-        <ProfileMainContainer></ProfileMainContainer>
+        <ProfileMainContainer>
+          <TopBar>
+            <WelcomeMessage>{`Welcome, Sun!`}</WelcomeMessage>
+            <ViewAndEditProfile>
+              <GreenText>View Public Profile</GreenText>
+              <Divider />
+              <GreenText>Edit Profile</GreenText>
+            </ViewAndEditProfile>
+          </TopBar>
+          <MainContainer>
+            <PersonalInfoContainer>personal info</PersonalInfoContainer>
+            <SectionsContainer>the sections we want</SectionsContainer>
+          </MainContainer>
+        </ProfileMainContainer>
       </FullPageLayer>
     );
   }
 }
+
+const SectionsContainer = styled.div`
+  width: 60%;
+`;
+
+const MainContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+`;
+
+const PersonalInfoContainer = styled.div`
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Divider = styled.div`
+  width: 25px;
+  height: 0px;
+  border: 1px solid #999988;
+  transform: translateY(8px) rotate(90deg);
+`;
+
+const ViewAndEditProfile = styled.div`
+  height: 20px;
+  display: flex;
+`;
+
+const GreenText = styled.div`
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  display: inline-block;
+  color: ${THEME_GREEN_COLOR};
+`;
+
+const WelcomeMessage = styled.div`
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+`;
+
+const TopBar = styled.div`
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
 
 const RightArrow = styled.img`
   width: 27px;
@@ -104,6 +176,7 @@ const ProfileMainContainer = styled.div`
   right: 0;
   bottom: 0;
   top: ${NAV_HEIGHT}px;
+  padding: 40px 60px;
 `;
 
 const FullPageLayer = styled.div`
