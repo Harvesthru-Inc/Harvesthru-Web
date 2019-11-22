@@ -103,9 +103,9 @@ const GridContainer = styled.div`
   margin-top: 24px;
   display: grid;
   grid-row-gap: 50px;
-  grid-template-columns: auto auto;
+  grid-template-columns: column;
   overflow-y: scroll;
-  height: 800px;
+  height: 500px;
 `;
 
 const SeeAll = styled.div`
