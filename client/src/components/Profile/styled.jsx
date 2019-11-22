@@ -102,8 +102,8 @@ const GridItemContainer = styled.div`
 const GridContainer = styled.div`
   margin-top: 24px;
   display: grid;
-  grid-auto-flow: column;
   grid-row-gap: 50px;
+  grid-template-columns: auto auto;
   overflow-y: scroll;
   height: 800px;
 `;
