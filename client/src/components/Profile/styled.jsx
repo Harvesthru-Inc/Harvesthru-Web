@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const NAV_HEIGHT = 100;
-const DASHBOARD_WIDTH = 247;
+const DASHBOARD_WIDTH = 0;
 const TEXT_COLOR = '#4A4A4A';
 const BORDER_COLOR = '#BFB8B8';
 const THEME_GREEN_COLOR = '#9acd00';
@@ -40,7 +40,6 @@ const SectionContent = styled.div`
 
 const InfoListContainer = styled.div`
   width: 200px;
-  margin-top: 40px;
 `;
 
 const InfoListItemIcon = styled.img`
@@ -122,13 +121,12 @@ const AvatarText = styled.div`
   font-weight: 300;
   font-size: 14px;
   line-height: 17px;
-  text-align: center;
   color: ${TEXT_COLOR};
 `;
 
 const SectionsContainer = styled.div`
   width: 65%;
-  padding: 40px 40px 0px 40px;
+  padding: 0px 40px 0px 40px;
 `;
 
 const MainContainer = styled.div`
@@ -142,7 +140,7 @@ const PersonalInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
   padding: 0px 40px 0px 40px;
 `;
 

@@ -1,3 +1,12 @@
 .scroll::-webkit-scrollbar {
   display: none;
 }
+
+.edit-button {
+  transition: all 0.3s linear;
+}
+
+.edit-button:hover {
+  background: #9acd00;
+  color: white;
+}
