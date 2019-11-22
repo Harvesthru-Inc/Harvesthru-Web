@@ -7,12 +7,14 @@ import home_icon from '../../assets/images/home_icon.png';
 import star_icon from '../../assets/images/star_icon.png';
 import verified_icon from '../../assets/images/verified_icon.png';
 
+import './scroll.css';
+
 const NAV_HEIGHT = 100;
 const DASHBOARD_WIDTH = 247;
 const TEXT_COLOR = '#4A4A4A';
 const BORDER_COLOR = '#BFB8B8';
 const THEME_GREEN_COLOR = '#9acd00';
-const PERSONAL_INFO_WIDTH = 300;
+const SECTION_HEIGHT = 225;
 
 class Profile extends React.Component {
   renderDashboardLinks = links => {
@@ -96,13 +98,64 @@ class Profile extends React.Component {
                 </InfoListItemContainer>
               </InfoListContainer>
             </PersonalInfoContainer>
-            <SectionsContainer>the sections we want</SectionsContainer>
+            <SectionsContainer>
+              <SectionContainer>
+                <SectionTitle>About Me</SectionTitle>
+                <SectionContent className="scroll">
+                  Hi, my name is Sun. I am a master at helping grow crops! Come try some of my
+                  produce sometimes. I especially love to grow strawberries and oranges.
+                </SectionContent>
+              </SectionContainer>
+              <SectionContainer>
+                <SectionTitle>Reviews</SectionTitle>
+                <SectionContent className="scroll">
+                  {[21, 32, 34, 242, 4, 2, 4, 2, 4, 2, 23].map(i => {
+                    return (
+                      <DummyReview>
+                        Hi, my name is Sun. I am a master at helping grow crops! Come try some of my
+                        produce sometimes. I especially love to grow strawberries and oranges.
+                      </DummyReview>
+                    );
+                  })}
+                </SectionContent>
+              </SectionContainer>
+            </SectionsContainer>
           </MainContainer>
         </ProfileMainContainer>
       </FullPageLayer>
     );
   }
 }
+const DummyReview = styled.div`
+  margin-bottom: 15px;
+`;
+
+const SectionContainer = styled.div`
+  display: block;
+`;
+
+const SectionTitle = styled.div`
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: ${TEXT_COLOR};
+`;
+
+const SectionContent = styled.div`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 16px 24px 16px 24px;
+  color: ${TEXT_COLOR};
+  height: ${SECTION_HEIGHT}px;
+  overflow-y: scroll;
+`;
 
 const InfoListContainer = styled.div`
   width: 200px;
@@ -315,7 +368,7 @@ const FullPageLayer = styled.div`
 `;
 
 const DashboardContainer = styled.div`
-  position: absolute;
+  position: fixed;
   width: ${DASHBOARD_WIDTH}px;
   left: 0px;
   top: ${NAV_HEIGHT}px;
