@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import right_arrow from '../../assets/images/right_arrow.png';
 import avatar_placeholder from '../../assets/images/avatar_placeholder.png';
+import email_icon from '../../assets/images/email_icon.png';
+import home_icon from '../../assets/images/home_icon.png';
+import star_icon from '../../assets/images/star_icon.png';
+import verified_icon from '../../assets/images/verified_icon.png';
 
 const NAV_HEIGHT = 100;
 const DASHBOARD_WIDTH = 247;
@@ -56,7 +60,42 @@ class Profile extends React.Component {
             </ViewAndEditProfile>
           </TopBar>
           <MainContainer>
-            <PersonalInfoContainer>personal info</PersonalInfoContainer>
+            <PersonalInfoContainer>
+              <Avatar src={avatar_placeholder}></Avatar>
+              <AvatarText>Memeber since .....</AvatarText>
+              <StatsContainer>
+                <SingleStatContainer>
+                  <StatNumber>--</StatNumber>
+                  <StatLabel>listings</StatLabel>
+                </SingleStatContainer>
+                <SingleStatContainer>
+                  <StatNumber>--</StatNumber>
+                  <StatLabel>followers</StatLabel>
+                </SingleStatContainer>
+                <SingleStatContainer>
+                  <StatNumber>--</StatNumber>
+                  <StatLabel>following</StatLabel>
+                </SingleStatContainer>
+              </StatsContainer>
+              <InfoListContainer>
+                <InfoListItemContainer>
+                  <InfoListItemIcon src={home_icon} />
+                  <InfoListItemText>the location field</InfoListItemText>
+                </InfoListItemContainer>
+                <InfoListItemContainer>
+                  <InfoListItemIcon src={email_icon} />
+                  <InfoListItemText>the email field</InfoListItemText>
+                </InfoListItemContainer>
+                <InfoListItemContainer>
+                  <InfoListItemIcon src={verified_icon} />
+                  <InfoListItemText>verified/not verified</InfoListItemText>
+                </InfoListItemContainer>
+                <InfoListItemContainer>
+                  <InfoListItemIcon src={star_icon} />
+                  <InfoListItemText>--- Reviews</InfoListItemText>
+                </InfoListItemContainer>
+              </InfoListContainer>
+            </PersonalInfoContainer>
             <SectionsContainer>the sections we want</SectionsContainer>
           </MainContainer>
         </ProfileMainContainer>
@@ -65,8 +104,97 @@ class Profile extends React.Component {
   }
 }
 
+const InfoListContainer = styled.div`
+  width: 200px;
+  margin-top: 40px;
+`;
+
+const InfoListItemIcon = styled.img`
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+`;
+
+const InfoListItemContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 12px;
+`;
+
+const InfoListItemText = styled.div`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  color: {TEXT_COLOR};
+  margin-left: 19px;
+  display: inline-block;
+`;
+
+const StatsContainer = styled.div`
+  width: 290px;
+  height: 50px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const SingleStatContainer = styled.div`
+  text-align: center;
+`;
+
+const StatLabel = styled.div`
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  color: ${TEXT_COLOR};
+`;
+
+const StatNumber = styled.div`
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: ${TEXT_COLOR};
+`;
+
+const Avatar = styled.img`
+  width: 150px;
+  height: 150px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+`;
+
+const AvatarText = styled.div`
+  width: 196px;
+  height: 19px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: ${TEXT_COLOR};
+`;
+
 const SectionsContainer = styled.div`
-  width: 60%;
+  width: 65%;
+  padding: 40px 40px 0px 40px;
 `;
 
 const MainContainer = styled.div`
@@ -76,11 +204,12 @@ const MainContainer = styled.div`
 `;
 
 const PersonalInfoContainer = styled.div`
-  width: 40%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  padding: 0px 40px 0px 40px;
 `;
 
 const Divider = styled.div`
