@@ -6,7 +6,13 @@ import TextField from '../../../lib/TextField';
 import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
-import { PATH_FORGOT_PASSWORD, FB_APP_ID, FB_REDIRECT_URL } from '../../../static/constants/appPath';
+import {
+  PATH_FORGOT_PASSWORD,
+  REACT_APP_FB_APP_ID,
+  REACT_APP_FB_REDIRECT_URL,
+  REACT_APP_FB_LOGIN_DIALOG,
+  REACT_APP_FB_STATE_KEY
+} from '../../../static/constants/appPath';
 import { Form, Field } from 'react-final-form';
 import {
   dividerStyle,
@@ -27,6 +33,7 @@ import {
 } from '../../../utils/validationRules';
 
 import { Divider } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -35,12 +42,12 @@ class Login extends Component {
     password: ''
   };
 
-  onSubmit = (val) => {
+  onSubmit = val => {
     return;
   };
 
-  handleFBAuth = () => {
-    console.log(FB_APP_ID);
+  redirectFBDialog = () => {
+    window.location.href = `${REACT_APP_FB_LOGIN_DIALOG}&client_id=${REACT_APP_FB_APP_ID}&redirect_uri=${REACT_APP_FB_REDIRECT_URL}&state=${REACT_APP_FB_STATE_KEY}`;
   };
 
   handleChange = ({ target: { value } }) => {
@@ -140,7 +147,7 @@ class Login extends Component {
                         <Col xs={11.2} lg={11.2}>
                           <Button
                             id="loginButtonFacebook"
-                            onClick={this.handleFBAuth}
+                            onClick={this.redirectFBDialog}
                             testid="loginButtonFacebook"
                             type="submit"
                             colorType="facebook"
@@ -185,6 +192,6 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
 
 // To Do(Dennis): to add prop types
