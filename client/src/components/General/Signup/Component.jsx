@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Col, Row } from '../../../lib/Grid';
 import Button from '../../../lib/Button';
 import TextField from '../../../lib/TextField';
 import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
-import { PATH_FORGOT_PASSWORD } from '../../../static/constants/appPath';
 import { Form, Field } from 'react-final-form';
 import {
-  dividerStyle,
   FormHelperLink,
   FullPageFilter,
   FullPageLayer,
@@ -23,15 +20,16 @@ import {
   emailRequired,
   passwordFormat,
   passwordLength,
-  passwordRequired
+  passwordRequired,
+  passwordConfirmed
 } from '../../../utils/validationRules';
 
-import { Divider } from 'semantic-ui-react';
-class Login extends Component {
+class Signup extends Component {
   state = {
-    login: true,
+    signup: true,
     emailAddress: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   };
 
   onSubmit = (val) => {
@@ -49,10 +47,10 @@ class Login extends Component {
       <FullPageLayer>
         <FullPageFilter
           onClick={() => {
-            this.props.closeLoginPanel();
+            this.props.closeSignupPanel();
           }}
         />
-        {this.state.login ? (
+        {this.state.signup ? (
           <LoginContainer>
             <LoginTitleWrapper>
               <Logo />
@@ -62,7 +60,7 @@ class Login extends Component {
               onSubmit={this.onSubmit}
               render={({ handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
-                  <Margin top={32} bottom={32}>
+                  <Margin top={30} bottom={15}>
                     <Row justify="center">
                       <Col xs={12} lg={12}>
                         <Field
@@ -85,11 +83,12 @@ class Login extends Component {
                       </Col>
                     </Row>
                   </Margin>
-                  <Margin top={32} bottom={32}>
+                  <Margin top={15} bottom={15}>
                     <Row justify="center">
                       <Col xs={12} lg={12}>
                         <Field
                           name="password"
+                          label="Password"
                           type="password"
                           // Note: the order of validators matter
                           validate={composeValidators(
@@ -110,12 +109,34 @@ class Login extends Component {
                             </React.Fragment>
                           )}
                         />
-                        <FormHelperLink>
-                          <Link to={PATH_FORGOT_PASSWORD}>Forgot your password?</Link>
-                        </FormHelperLink>
                       </Col>
-                      <Row justify="center">
-                        <Col xs={11.2} lg={11.2}>
+                    </Row>
+                  </Margin>
+                  <Margin top={25} bottom={15}>
+                    <Row justify="center">
+                      <Col xs={12} lg={12}>
+                        <Field
+                          name="confirmPassword"
+                          type="password"
+                          label="Confirmation"
+                          // Note: the order of validators matter
+                          validate={passwordConfirmed}
+                          render={({ input, meta }) => (
+                            <React.Fragment>
+                              <TextField
+                                label="Confirm Password"
+                                placeholder="Your password"
+                                autoFocus={false}
+                                {...input}
+                                {...meta}
+                              />
+                              {meta.touched && <FieldError>{meta.error}</FieldError>}
+                            </React.Fragment>
+                          )}
+                        />
+                      </Col>
+                      <Col xs={12} lg={12}>
+                        <Margin top={30}>
                           <Button
                             id="loginButton"
                             testid="loginButton"
@@ -124,49 +145,25 @@ class Login extends Component {
                             block
                             disabled={false}
                           >
-                            Log In
+                            Sign Up
                           </Button>
-                        </Col>
-                        <Col xs={11.2} lg={11.2}>
-                          <Divider horizontal style={dividerStyle}>
-                            or
-                          </Divider>
-                        </Col>
-                        <Col xs={11.2} lg={11.2}>
-                          <Button
-                            id="loginButtonFacebook"
-                            testid="loginButtonFacebook"
-                            type="submit"
-                            colorType="facebook"
-                            block
-                            disabled={false}
-                          >
-                            Sign In with Facebook
-                          </Button>
-                        </Col>
-                        <Col xs={11.2} lg={11.2}>
-                          <Button
-                            id="loginButtonGoogle"
-                            testid="loginButtonGoogle"
-                            type="submit"
-                            colorType="google"
-                            block
-                            disabled={false}
-                          >
-                            Sign in with Google
-                          </Button>
-                        </Col>
-                      </Row>
-                      <Row justify="center">
-                        <FormHelperLink
-                          onClick={() => {
-                            this.props.closeLoginPanel();
-                            this.props.openSignupPanel();
-                          }}
-                        >
-                          <a>Don't have an account?</a>
-                        </FormHelperLink>
-                      </Row>
+                        </Margin>
+                      </Col>
+
+                      <Col xs={11.2} lg={11.2}>
+                        <Margin top={15}>
+                          <Row justify="center">
+                            <FormHelperLink
+                              onClick={() => {
+                                this.props.closeSignupPanel();
+                                this.props.openLoginPanel();
+                              }}
+                            >
+                              <a>Already known us?</a>
+                            </FormHelperLink>
+                          </Row>
+                        </Margin>
+                      </Col>
                     </Row>
                   </Margin>
                 </form>
@@ -179,6 +176,6 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Signup;
 
 // To Do(Dennis): to add prop types

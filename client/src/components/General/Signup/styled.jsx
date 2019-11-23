@@ -29,10 +29,8 @@ const FormHelperLink = styled.div`
   font-weight: bold;
   line-height: 17px;
   text-align: right;
-  cursor: pointer;
   a {
     color: ${Color.grey};
-    cursor: pointer;
     &:visited {
       color: ${Color.darkGrey};
     }
@@ -67,18 +65,7 @@ const LoginTitleWrapper = styled.div`
   align-items: center;
 `;
 
-const dividerStyle = {
-  color: '#6C6C6C',
-  fontFamily: 'Quicksand',
-  fontStyle: 'normal',
-  fontWeight: 'bold',
-  fontSize: '13px',
-  lineHeight: '10px',
-  textTransform: 'lowercase',
-  margin: '2px'
-};
 export {
-  dividerStyle,
   FullPageLayer,
   // fadeInAnimation,
   FullPageFilter,
