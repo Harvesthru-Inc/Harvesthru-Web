@@ -6,7 +6,7 @@ import TextField from '../../../lib/TextField';
 import FieldError from '../../../lib/Feedback/FieldError';
 import { Margin } from '../../../Styles/utils';
 import { Logo, Brand } from '../../../Styles/bases/Identity';
-import { PATH_FORGOT_PASSWORD } from '../../../static/constants/appPath';
+import { PATH_FORGOT_PASSWORD, FB_APP_ID, FB_REDIRECT_URL } from '../../../static/constants/appPath';
 import { Form, Field } from 'react-final-form';
 import {
   dividerStyle,
@@ -27,6 +27,7 @@ import {
 } from '../../../utils/validationRules';
 
 import { Divider } from 'semantic-ui-react';
+
 class Login extends Component {
   state = {
     login: true,
@@ -36,6 +37,10 @@ class Login extends Component {
 
   onSubmit = (val) => {
     return;
+  };
+
+  handleFBAuth = () => {
+    console.log(FB_APP_ID);
   };
 
   handleChange = ({ target: { value } }) => {
@@ -135,6 +140,7 @@ class Login extends Component {
                         <Col xs={11.2} lg={11.2}>
                           <Button
                             id="loginButtonFacebook"
+                            onClick={this.handleFBAuth}
                             testid="loginButtonFacebook"
                             type="submit"
                             colorType="facebook"
