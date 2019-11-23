@@ -10,7 +10,7 @@ const app = express();
 const path = require("path");
 
 // Sanity check for env processing
-if (!process.env.URL || !process.env.privateKey) {
+if (!process.env.URL || !process.env.PRIVATE_KEY) {
   console.error(
     "FATAL ERROR: No environment variables are defined, please ask server admin for custom variables"
   );
