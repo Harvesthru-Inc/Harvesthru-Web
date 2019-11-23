@@ -4,13 +4,27 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User } = require("../models/user");
-const passport = require("passport-facebook");
-const FacebookStrategy = require('passport-oauth').OAuth2Strategy;
+const passport = require("passport");
+const FacebookTokenStrategy = require("passport-facebook-token");
 const express = require("express");
 const router = express.Router();
-const config = require("config");
 
-router.post("/login", async (req, res) => {
+// Use FB auth strategy
+passport.use(
+  "facebookToken",
+  new FacebookTokenStrategy(
+    {
+      clientID: process.env.clientID,
+      clientSecret: process.env.clientSecret
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(accessToken, refreshToken, profile, done);
+    }
+  )
+);
+
+// Custom Authentication Route
+router.post("/", async (req, res) => {
   // First Validate The HTTP Request
   const { error } = validate(req.body);
   if (error) {
@@ -28,7 +42,7 @@ router.post("/login", async (req, res) => {
   if (!validPassword) {
     return res.status(400).send("Incorrect email or password.");
   }
-  const token = jwt.sign({ _id: user._id },process.env.privateKey); // PrivateKey in config/default.json
+  const token = jwt.sign({ _id: user._id }, process.env.privateKey); // PrivateKey in config/default.json
   res.header("x-auth-token", token).send({
     _id: user._id,
     name: user.name,
@@ -37,17 +51,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Facebook Login Route
-router.get("/facebook", passport.authenticate("facebook"));
-
-// Facebook Callback Route
-router.get(
-  "/facebook/callback",
-  passport.authenticate("facebook", { failureRedirect: "/" }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  }
-);
+router.post("/facebook", passport.authenticate("facebook", { session: false }));
 
 // validate if the user email and password are valid inputs
 const validate = req => {

@@ -1,7 +1,6 @@
 // Install Necessary Dependencies
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const bcrypt = require("bcrypt");
 const { User, validate } = require("../models/user");
 const express = require("express");
