@@ -4,24 +4,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const _ = require("lodash");
 const { User } = require("../models/user");
-const passport = require("passport");
-const FacebookTokenStrategy = require("passport-facebook-token");
 const express = require("express");
 const router = express.Router();
-
-// Use FB auth strategy
-passport.use(
-  "facebookToken",
-  new FacebookTokenStrategy(
-    {
-      clientID: process.env.clientID,
-      clientSecret: process.env.clientSecret
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      console.log(accessToken, refreshToken, profile, done);
-    }
-  )
-);
+const fb_auth_dialog = "https://www.facebook.com/v5.0/dialog/oauth?client_id=793914657709001&redirect_uri=https://localhost:8000/fb-signin&state=fb-login-state";
 
 // Custom Authentication Route
 router.post("/", async (req, res) => {
@@ -49,9 +34,6 @@ router.post("/", async (req, res) => {
     email: user.email
   });
 });
-
-// Facebook Login Route
-router.post("/facebook", passport.authenticate("facebook", { session: false }));
 
 // validate if the user email and password are valid inputs
 const validate = req => {

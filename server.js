@@ -15,6 +15,8 @@ const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
 const path = require("path");
+const https = require("https");
+const fs = require('fs')
 
 // Sanity check for env processing
 if (!process.env.URL || !process.env.PRIVATE_KEY) {
@@ -28,7 +30,11 @@ if (!process.env.URL || !process.env.PRIVATE_KEY) {
 const URL = process.env.URL;
 
 mongoose
-  .connect(URL, { dbName: "authentication", useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(URL, {
+    dbName: "authentication",
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log("Now connected to MongoDB!"))
   .catch(err => console.error("Something went wrong", err));
 
@@ -48,6 +54,14 @@ app.get("*", (req, res) => {
 });
 
 let port = process.env.PORT || 8000;
-app.listen(port, () => {
-  console.log("listen on port 8000");
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert")
+    },
+    app
+  )
+  .listen(port, () => {
+    console.log("listen on port 8000");
+  });
