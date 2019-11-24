@@ -47,7 +47,11 @@ app.get("*", (req, res) => {
 });
 
 let port = process.env.PORT || 8000;
-https
+app.listen(port, () => {
+  console.log("listen on port 8000");
+});
+
+/* https
   .createServer(
     {
       key: fs.readFileSync("server.key"),
@@ -55,6 +59,4 @@ https
     },
     app
   )
-  .listen(port, () => {
-    console.log("listen on port 8000");
-  });
+*/
