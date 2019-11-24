@@ -48,7 +48,7 @@ app.get("*", (req, res) => {
 
 let port = process.env.PORT || 8000;
 app.listen(port, () => {
-  console.log("listen on port 8000");
+  console.log(`Harvesthru app is running on port ${port}`);
 });
 
 /* https
