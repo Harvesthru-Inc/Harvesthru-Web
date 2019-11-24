@@ -1,7 +1,6 @@
 // Install Necessary Dependencies
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const bcrypt = require("bcrypt");
 const { User, validate } = require("../models/user");
 const express = require("express");
@@ -25,11 +24,12 @@ router.post("/", async (req, res) => {
       email: req.body.email,
       password: req.body.password
     });
+
     // generate a salt(seed) and use that to hash the user password
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
-    const token = jwt.sign({ _id: user._id }, process.env.privateKey); //jwt encrypts {_id: user._id} using PrivateKey
+    const token = jwt.sign({ _id: user._id }, process.env.PRIVATE_KEY); //jwt encrypts {_id: user._id} using PrivateKey
     res
       .header("x-auth-token", token)
       .send({ _id: user._id, name: user.name, email: user.email });
