@@ -1,9 +1,7 @@
 // Neccessary dependencies
 require("dotenv").config();
-const Joi = require("joi");
-Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
-const users = require("./routes/users");
+const user = require("./routes/user");
 const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
@@ -18,23 +16,27 @@ if (!process.env.URL || !process.env.privateKey) {
 // Mongo Atlas custom URL to mongoose connection
 const URL = process.env.URL;
 
+// Connect to our authentication DB in Mongo Atlas
 mongoose
   .connect(URL, { dbName: "authentication" })
   .then(() => console.log("Now connected to MongoDB!"))
   .catch((err) => console.error("Something went wrong", err));
 
-// ... other app.use middleware
+// Load index.html page provided
 app.use(express.static(path.join(__dirname, "client", "build")));
-// parse request body as json
+// Parse request body as json
 app.use(express.json());
-// using custom route
-app.use("/api/users", users);
+// Custom Routing for our app here
+app.use("/api/user", user);
 app.use("/api/auth", auth);
+app.use('/api/profile', require('./routes/profile'));
 
+// Get active path directory that we are executing our application
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
+// Listen on port 8000
 let port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log("listen on port 8000");
