@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import React from 'react';
 import { Brand, Logo, LogoAndBrand } from '../../Styles/bases/Identity';
 import './hover.css';
+import avatarPlaceholder from '../../assets/images/avatar_placeholder.png';
+import downTriangle from '../../assets/images/down_triangle.png';
 
 class Navbar extends React.Component {
   render() {
@@ -23,6 +25,10 @@ class Navbar extends React.Component {
             Login
           </NavItem>
         </ItemsContainer>
+        <CollapseContainer>
+          <Avatar src={avatarPlaceholder} />
+          <DownIcon src={downTriangle} />
+        </CollapseContainer>
       </NavbarContainer>
     );
   }
@@ -30,6 +36,17 @@ class Navbar extends React.Component {
 
 export default Navbar;
 
+const Avatar = styled.img`
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+`;
+
+const DownIcon = styled.img`
+  width: 16px;
+  height: 11.2px;
+  margin-left: 11px;
+`;
 const NavbarContainer = styled.div`
   position: fixed;
   left: 0;
@@ -49,6 +66,14 @@ const ItemsContainer = styled.div`
   align-items: center;
   margin-right: 36px;
   min-width: 580px;
+`;
+
+const CollapseContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 24px;
+  cursor: pointer;
 `;
 
 const NavItem = styled.div`

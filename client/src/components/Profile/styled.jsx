@@ -59,22 +59,28 @@ const AvatarText = styled.div`
 
 const SectionsContainer = styled.div`
   width: 65%;
-  padding: 0px 40px 0px 40px;
+  margin-right: 7%;
+  margin-top: 40px;
 `;
 
 const MainContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
 `;
 
 const PersonalInfoContainer = styled.div`
-  width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
-  padding: 0px 40px 0px 40px;
+  padding-top: 40px;
+  margin-left: 7%;
+  margin-right: 7%;
+  width: 28%;
+  height: 100%;
+  border-right: 0.5px solid #cccccc;
 `;
 
 const ProfileMainContainer = styled.div`
@@ -83,27 +89,29 @@ const ProfileMainContainer = styled.div`
   right: 0;
   bottom: 0;
   top: ${NAV_HEIGHT}px;
-  padding: 40px 60px;
 `;
 
 const FullPageLayer = styled.div`
   width: 100%;
   height: 100vh;
   padding-top: ${NAV_HEIGHT}px;
+  overflow-y: hidden;
 `;
 
 const GridItemContainer = styled.div`
-  width: 360px;
+  width: 45%;
   height: 200px;
   background: #c4c4c4;
   border-radius: 8px;
+  margin-bottom: 50px;
 `;
 
 const GridContainer = styled.div`
   margin-top: 24px;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   grid-row-gap: 50px;
-  grid-template-columns: column;
+  flex-wrap: wrap;
   overflow-y: scroll;
   height: 500px;
 `;
@@ -160,7 +168,7 @@ const EditButton = styled.div`
 `;
 
 const EditButtonRow = styled.div`
-  width: 285px;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 `;

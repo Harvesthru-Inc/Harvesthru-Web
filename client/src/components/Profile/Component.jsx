@@ -6,6 +6,7 @@ import star_icon from '../../assets/images/star_icon.png';
 import verified_icon from '../../assets/images/verified_icon.png';
 import edit_icon from '../../assets/images/edit_icon.png';
 import './scroll.css';
+import styled from 'styled-components';
 
 import {
   InfoListContainer,
@@ -110,7 +111,10 @@ class Profile extends React.Component {
               </InfoListContainer>
             </PersonalInfoContainer>
             <SectionsContainer>
-              <GridNav>{this.renderGridNavLinks(links)}</GridNav>
+              <GridNavContainer>
+                <GridNav>{this.renderGridNavLinks(links)}</GridNav>
+              </GridNavContainer>
+
               <SeeAll>See All ></SeeAll>
               <GridContainer className="scroll">
                 {[1, 3, 42, 4, 2, 4, 2, 4, 2, 3].map(i => {
@@ -124,5 +128,12 @@ class Profile extends React.Component {
     );
   }
 }
+
+const GridNavContainer = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 30px;
+  padding-bottom: 7px;
+`;
 
 export default Profile;
