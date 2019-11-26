@@ -76,6 +76,12 @@ class Profile extends React.Component {
               </EditButtonRow>
               <Avatar src={avatar_placeholder}></Avatar>
               <div>
+                <SmallerWindowWrapper>
+                  <EditButton className="edit-button">
+                    <EditIcon src={edit_icon} />
+                    Edit Profile
+                  </EditButton>
+                </SmallerWindowWrapper>
                 <NameText>Mister Sun</NameText>
                 <AvatarText>Memeber since .....</AvatarText>
                 <FollowsContainer>
@@ -111,10 +117,10 @@ class Profile extends React.Component {
                   </InfoListItemContainer>
                 </InfoListContainer>
               </div>
-              <EditButton className="edit-button">
+              <EditButton2 className="edit-button">
                 <EditIcon src={edit_icon} />
                 Edit Profile
-              </EditButton>
+              </EditButton2>
             </PersonalInfoContainer>
             <SectionsContainer>
               <GridNavContainer>
@@ -134,6 +140,41 @@ class Profile extends React.Component {
     );
   }
 }
+
+const SmallerWindowWrapper = styled.div`
+  display: none;
+  @media (max-width: 550px) {
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+
+const THEME_GREEN_COLOR = '#9acd00';
+
+const EditButton2 = styled.div`
+  display: none;
+  border: 1px solid ${THEME_GREEN_COLOR};
+  box-sizing: border-box;
+  border-radius: 24px;
+  min-width: 127px;
+  height: 32px;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 5px;
+  padding-left: 12px;
+  cursor: pointer;
+  color: ${THEME_GREEN_COLOR};
+  @media (max-width: 900px) {
+    display: block;
+  }
+
+  @media (max-width: 550px) {
+    display: none;
+  }
+`;
 
 const GridNavContainer = styled.div`
   width: 100%;

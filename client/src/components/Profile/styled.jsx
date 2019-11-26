@@ -48,6 +48,13 @@ const Avatar = styled.img`
     margin-top: 0;
     margin-right: 45px;
   }
+
+  @media (max-width: 550px) {
+    margin-top: 0;
+    margin-right: 20px;
+    height: 100px;
+    width: 100px;
+  }
 `;
 
 const AvatarText = styled.div`
@@ -148,6 +155,7 @@ const GridContainer = styled.div`
   @media (max-width: 900px) {
     margin-left: 20px;
     margin-right: 20px;
+    overflow-y: visible;
   }
 `;
 
@@ -195,7 +203,8 @@ const EditButton = styled.div`
   border: 1px solid ${THEME_GREEN_COLOR};
   box-sizing: border-box;
   border-radius: 24px;
-  width: 127px;
+  min-width: 127px;
+  max-width: 127px;
   height: 32px;
   font-family: Quicksand;
   font-style: normal;
@@ -267,6 +276,10 @@ const Description = styled.div`
 
   @media (max-width: 900px) {
     width: 400px;
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
   }
 `;
 
