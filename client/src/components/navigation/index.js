@@ -12,7 +12,6 @@ class Navbar extends React.Component {
   };
 
   collapseNavbar = () => {
-    console.log('fuck');
     this.setState({ navCollapsed: window.innerWidth < 900 });
   };
 

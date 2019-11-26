@@ -43,6 +43,11 @@ const Avatar = styled.img`
   margin-top: 40px;
   margin-bottom: 15px;
   border-radius: 50%;
+
+  @media (max-width: 900px) {
+    margin-top: 0;
+    margin-right: 45px;
+  }
 `;
 
 const AvatarText = styled.div`
@@ -89,9 +94,13 @@ const PersonalInfoContainer = styled.div`
   border-right: 0.5px solid #cccccc;
 
   @media (max-width: 900px) {
+    padding-left: 10px;
+    padding-right: 10px;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
+    flex-direction: row;
+    justify-content: center;
   }
 `;
 
@@ -188,6 +197,10 @@ const EditButtonRow = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
 const FollowsContainer = styled.div`
@@ -235,6 +248,10 @@ const Description = styled.div`
   width: 228px;
   color: ${TEXT_COLOR};
   margin: 18px 0px 16px 0px;
+
+  @media (max-width: 900px) {
+    width: 400px;
+  }
 `;
 
 const NameText = styled.div`

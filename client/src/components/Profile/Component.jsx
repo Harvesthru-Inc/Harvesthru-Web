@@ -75,40 +75,46 @@ class Profile extends React.Component {
                 </EditButton>
               </EditButtonRow>
               <Avatar src={avatar_placeholder}></Avatar>
-              <NameText>Mister Sun</NameText>
-              <AvatarText>Memeber since .....</AvatarText>
-              <FollowsContainer>
-                <Followers>
-                  <FollowsNumber>--</FollowsNumber>
-                  <FollowsLabel>Followers</FollowsLabel>
-                </Followers>
-                <Following>
-                  <FollowsNumber>--</FollowsNumber>
-                  <FollowsLabel>Following</FollowsLabel>
-                </Following>
-              </FollowsContainer>
-              <Description>
-                Hi, my name is Sun. I am a master at helping grow crops! Come try some of my produce
-                sometimes.
-              </Description>
-              <InfoListContainer>
-                <InfoListItemContainer>
-                  <InfoListItemIcon src={home_icon} />
-                  <InfoListItemText>the location field</InfoListItemText>
-                </InfoListItemContainer>
-                <InfoListItemContainer>
-                  <InfoListItemIcon src={email_icon} />
-                  <InfoListItemText>the email field</InfoListItemText>
-                </InfoListItemContainer>
-                <InfoListItemContainer>
-                  <InfoListItemIcon src={verified_icon} />
-                  <InfoListItemText>verified/not verified</InfoListItemText>
-                </InfoListItemContainer>
-                <InfoListItemContainer>
-                  <InfoListItemIcon src={star_icon} />
-                  <InfoListItemText>--- Reviews</InfoListItemText>
-                </InfoListItemContainer>
-              </InfoListContainer>
+              <div>
+                <NameText>Mister Sun</NameText>
+                <AvatarText>Memeber since .....</AvatarText>
+                <FollowsContainer>
+                  <Followers>
+                    <FollowsNumber>--</FollowsNumber>
+                    <FollowsLabel>Followers</FollowsLabel>
+                  </Followers>
+                  <Following>
+                    <FollowsNumber>--</FollowsNumber>
+                    <FollowsLabel>Following</FollowsLabel>
+                  </Following>
+                </FollowsContainer>
+                <Description>
+                  Hi, my name is Sun. I am a master at helping grow crops! Come try some of my
+                  produce sometimes.
+                </Description>
+                <InfoListContainer>
+                  <InfoListItemContainer>
+                    <InfoListItemIcon src={home_icon} />
+                    <InfoListItemText>the location field</InfoListItemText>
+                  </InfoListItemContainer>
+                  <InfoListItemContainer>
+                    <InfoListItemIcon src={email_icon} />
+                    <InfoListItemText>the email field</InfoListItemText>
+                  </InfoListItemContainer>
+                  <InfoListItemContainer>
+                    <InfoListItemIcon src={verified_icon} />
+                    <InfoListItemText>verified/not verified</InfoListItemText>
+                  </InfoListItemContainer>
+                  <InfoListItemContainer>
+                    <InfoListItemIcon src={star_icon} />
+                    <InfoListItemText>--- Reviews</InfoListItemText>
+                  </InfoListItemContainer>
+                </InfoListContainer>
+              </div>
+              <EditButton className="edit-button">
+                <EditIcon src={edit_icon} />
+                Edit Profile
+              </EditButton>
             </PersonalInfoContainer>
             <SectionsContainer>
               <GridNavContainer>
