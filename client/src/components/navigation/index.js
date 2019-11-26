@@ -6,6 +6,19 @@ import avatarPlaceholder from '../../assets/images/avatar_placeholder.png';
 import downTriangle from '../../assets/images/down_triangle.png';
 
 class Navbar extends React.Component {
+  state = {
+    menuOpen: false,
+    navCollapsed: false
+  };
+
+  collapseNavbar = () => {
+    console.log('fuck');
+    this.setState({ navCollapsed: window.innerWidth < 900 });
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.collapseNavbar);
+  }
   render() {
     return (
       <NavbarContainer>
@@ -13,9 +26,16 @@ class Navbar extends React.Component {
           <Logo />
           <Brand>Harvesthru</Brand>
         </LogoAndBrand>
-        <ItemsContainer>
-          <NavItem className="link-hover">Map</NavItem>
-          <NavItem className="link-hover">Marketplace</NavItem>
+        <CollapseContainer
+          onMouseEnter={() => {
+            this.setState({ menuOpen: true });
+          }}
+          onMouseLeave={() => {
+            this.setState({ menuOpen: false });
+          }}
+        >
+          {!this.state.navCollapsed && <NavItem className="link-hover">Sell</NavItem>}
+          {!this.state.navCollapsed && <NavItem className="link-hover">Messages</NavItem>}
           <NavItem
             className="link-hover"
             onClick={() => {
@@ -24,17 +44,50 @@ class Navbar extends React.Component {
           >
             Login
           </NavItem>
-        </ItemsContainer>
-        <CollapseContainer>
           <Avatar src={avatarPlaceholder} />
           <DownIcon src={downTriangle} />
         </CollapseContainer>
+        {this.state.menuOpen && (
+          <CollapseMenuContainer>
+            <CollapseMenuItemContainer>Dummy</CollapseMenuItemContainer>
+            <CollapseMenuItemContainer>Dummy</CollapseMenuItemContainer>
+            <CollapseMenuItemContainer>Dummy</CollapseMenuItemContainer>
+            <CollapseMenuItemContainer>Dummy</CollapseMenuItemContainer>
+          </CollapseMenuContainer>
+        )}
       </NavbarContainer>
     );
   }
 }
 
 export default Navbar;
+
+const CollapseMenuContainer = styled.div`
+  border-top: 1px solid #bfb8b8;
+  position: absolute;
+  width: 163px;
+  top: 100px;
+  right: 0px;
+`;
+
+const CollapseMenuItemContainer = styled.div`
+  width: 100%;
+  height: 72px;
+  box-sizing: border-box;
+  border-left: 1px solid #bfb8b8;
+  border-bottom: 1px solid #bfb8b8;
+  border-right: 1px solid #bfb8b8;
+  background: #ffffff;
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+
+  padding: 23px 38px;
+
+  color: #000000;
+`;
 
 const Avatar = styled.img`
   width: 54px;
@@ -81,6 +134,7 @@ const NavItem = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
+  margin-right: 24px;
   line-height: 29px;
   cursor: pointer;
   color: #000000;
