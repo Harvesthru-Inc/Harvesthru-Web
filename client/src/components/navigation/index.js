@@ -111,6 +111,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   z-index: 10;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
+  background-color: white;
 `;
 
 const ItemsContainer = styled.div`

@@ -67,7 +67,13 @@ const MainContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const PersonalInfoContainer = styled.div`
@@ -81,6 +87,12 @@ const PersonalInfoContainer = styled.div`
   width: 28%;
   height: 100%;
   border-right: 0.5px solid #cccccc;
+
+  @media (max-width: 900px) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const ProfileMainContainer = styled.div`
@@ -96,6 +108,10 @@ const FullPageLayer = styled.div`
   height: 100vh;
   padding-top: ${NAV_HEIGHT}px;
   overflow-y: hidden;
+
+  @media (max-width: 900px) {
+    overflow-y: auto;
+  }
 `;
 
 const GridItemContainer = styled.div`
