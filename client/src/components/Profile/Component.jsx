@@ -6,7 +6,6 @@ import star_icon from '../../assets/images/star_icon.png';
 import verified_icon from '../../assets/images/verified_icon.png';
 import edit_icon from '../../assets/images/edit_icon.png';
 import './scroll.css';
-import styled from 'styled-components';
 
 import {
   InfoListContainer,
@@ -34,7 +33,10 @@ import {
   FollowsLabel,
   FollowsNumber,
   Description,
-  NameText
+  NameText,
+  SmallerWindowWrapper,
+  EditButton2,
+  GridNavContainer
 } from './styled.jsx';
 
 class Profile extends React.Component {
@@ -140,51 +142,5 @@ class Profile extends React.Component {
     );
   }
 }
-
-const SmallerWindowWrapper = styled.div`
-  display: none;
-  @media (max-width: 550px) {
-    display: flex;
-    justify-content: flex-end;
-  }
-`;
-
-const THEME_GREEN_COLOR = '#9acd00';
-
-const EditButton2 = styled.div`
-  display: none;
-  border: 1px solid ${THEME_GREEN_COLOR};
-  box-sizing: border-box;
-  border-radius: 24px;
-  min-width: 127px;
-  height: 32px;
-  font-family: Quicksand;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  padding-top: 5px;
-  padding-left: 12px;
-  cursor: pointer;
-  color: ${THEME_GREEN_COLOR};
-  @media (max-width: 900px) {
-    display: block;
-  }
-
-  @media (max-width: 550px) {
-    display: none;
-  }
-`;
-
-const GridNavContainer = styled.div`
-  width: 100%;
-  border-bottom: 1px solid #cccccc;
-  margin-bottom: 30px;
-  padding-bottom: 7px;
-
-  @media (max-width: 900px) {
-    align-items: center;
-  }
-`;
 
 export default Profile;
