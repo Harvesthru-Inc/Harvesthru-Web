@@ -168,6 +168,7 @@ const EditButton = styled.div`
 `;
 
 const EditButtonRow = styled.div`
+  padding-right: 10%;
   width: 100%;
   display: flex;
   justify-content: flex-end;
