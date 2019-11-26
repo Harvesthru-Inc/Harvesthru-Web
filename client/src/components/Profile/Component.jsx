@@ -140,6 +140,10 @@ const GridNavContainer = styled.div`
   border-bottom: 1px solid #cccccc;
   margin-bottom: 30px;
   padding-bottom: 7px;
+
+  @media (max-width: 900px) {
+    align-items: center;
+  }
 `;
 
 export default Profile;

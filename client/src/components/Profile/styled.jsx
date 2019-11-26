@@ -66,6 +66,11 @@ const SectionsContainer = styled.div`
   width: 65%;
   margin-right: 7%;
   margin-top: 40px;
+
+  @media (max-width: 900px) {
+    margin-right: 0;
+    width: 100%;
+  }
 `;
 
 const MainContainer = styled.div`
@@ -139,6 +144,11 @@ const GridContainer = styled.div`
   flex-wrap: wrap;
   overflow-y: scroll;
   height: 500px;
+
+  @media (max-width: 900px) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 `;
 
 const SeeAll = styled.div`
@@ -156,6 +166,12 @@ const GridNav = styled.div`
   display: flex;
   justify-content: space-between;
   width: 500px;
+  min-width: 350px;
+
+  @media (max-width: 900px) {
+    margin: auto;
+    width: 80%;
+  }
 `;
 
 const GridNavItem = styled.div`
