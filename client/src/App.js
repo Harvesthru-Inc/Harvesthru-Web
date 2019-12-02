@@ -6,10 +6,12 @@ import Signup from './components/General/Signup';
 import Profile from './components/Profile'; // only for testing purpose
 import NormalizeStyle from './Styles/bases/Normalize';
 import 'semantic-ui-css/semantic.min.css';
+import ForgotPassword from './components/General/ForgotPassword';
 
 class App extends React.Component {
   state = {
-    isLoginOpen: false
+    isLoginOpen: false,
+    isForgotPasswordOpen: false
   };
 
   openLoginPanel = () => {
@@ -27,6 +29,18 @@ class App extends React.Component {
   closeSignupPanel = () => {
     this.setState({ isSignupOpen: false });
   };
+
+  openForgotPasswordPanel = () => {
+    this.setState({
+      isForgotPasswordOpen: true,
+      isLoginOpen: false
+    });
+  };
+
+  closeForgotPasswordPanel = () => {
+    this.setState({ isForgotPasswordOpen: false });
+  };
+
   render() {
     return (
       <div className="App">
@@ -34,18 +48,29 @@ class App extends React.Component {
         <BrowserRouter>
           <div>
             <Navbar openLoginPanel={this.openLoginPanel} />
+
             {this.state.isLoginOpen ? (
               <Login
                 closeLoginPanel={this.closeLoginPanel}
                 openSignupPanel={this.openSignupPanel}
+                openForgotPasswordPanel={this.openForgotPasswordPanel}
               />
             ) : null}
+
             {this.state.isSignupOpen ? (
               <Signup
                 closeSignupPanel={this.closeSignupPanel}
                 openLoginPanel={this.openLoginPanel}
               />
             ) : null}
+
+            {this.state.isForgotPasswordOpen ? (
+              <ForgotPassword
+                closeForgotPasswordPanel={this.closeForgotPasswordPanel}
+                openForgotPasswordPanel={this.openForgotPasswordPanel}
+              />
+            ) : null}
+
             <Switch>
               <Route
                 exact
