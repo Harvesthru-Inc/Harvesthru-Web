@@ -122,7 +122,9 @@ class Login extends Component {
                             </React.Fragment>
                           )}
                         />
-                        <FormHelperLink>
+                        <FormHelperLink
+                          style={{ height: '5px', marginTop: '10px', marginBottom: '10px' }}
+                        >
                           <Link to={PATH_FORGOT_PASSWORD}>Forgot your password?</Link>
                         </FormHelperLink>
                       </Col>
