@@ -122,8 +122,11 @@ class Login extends Component {
                             </React.Fragment>
                           )}
                         />
-                        <FormHelperLink>
-                          <Link to={PATH_FORGOT_PASSWORD}>Forgot your password?</Link>
+                        <FormHelperLink onClick={() => {
+                            this.props.openForgotPasswordPanel();
+                          }}
+                        >
+                          Forgot your password?
                         </FormHelperLink>
                       </Col>
                       <Row justify="center">
