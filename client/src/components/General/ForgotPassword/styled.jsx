@@ -43,6 +43,7 @@ const FormHelperLink = styled.div`
 
 // const fadeInDownAnimation = keyframes`${fadeIn}`;
 const LoginContainer = styled.div`
+  font-family: Quicksand;
   width: 450px;
   height: 640px;
   position: absolute;
