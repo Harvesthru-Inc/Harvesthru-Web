@@ -1,17 +1,14 @@
-// Auth for routing
-require("dotenv").config();
+// Install dependencies
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
 const bcrypt = require('bcryptjs');
-const auth = require('../middleware/auth');
+const auth = require('../../middleware/auth');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator/check');
+const User = require('../../models/User');
 
-const User = require('../models/User');
-
-// @route    GET auth for a user given a JWT token
+// @route    GET api/auth
 // @desc     Test route
 // @access   Public
 router.get('/', auth, async (req, res) => {
@@ -24,7 +21,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// @route    POST api/auth
+// @route    POST api/auth/login
 // @desc     Authenticate user & get token
 // @access   Public
 router.post(
@@ -66,7 +63,7 @@ router.post(
 
       jwt.sign(
         payload,
-        process.env.jwtSecret,
+        config.get('jwtSecret'),
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;

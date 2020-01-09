@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://Jaden:Jaden1234@harvesthru-back-xwbyo.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "secret",
+    "githubClientId": "",
+    "githubSecret": ""
+  }
