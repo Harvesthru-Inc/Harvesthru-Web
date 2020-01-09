@@ -1,62 +1,32 @@
-// Neccessary dependencies
-require("dotenv").config();
-const Joi = require("joi");
-Joi.objectId = require("joi-objectid")(Joi);
-const mongoose = require("mongoose");
-const users = require("./routes/users");
-const auth = require("./routes/auth");
-const express = require("express");
+// Install Necessary dependencies
+const express = require('express');
+const connectDB = require('./config/db');
+const path = require('path');
 const app = express();
-const path = require("path");
-const https = require("https");
-const fs = require('fs')
 
-// Sanity check for env processing
-if (!process.env.URL || !process.env.PRIVATE_KEY) {
-  console.error(
-    "FATAL ERROR: No environment variables are defined, please ask server admin for custom variables"
-  );
-  process.exit(1);
+// Calls connectDB in our config directory
+connectDB();
+
+// Must include for parsing our json objects (middleware)
+app.use(express.json({ extended: false }));
+
+// Custom defined routing from our API
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/profile', require('./routes/api/profile'));
+
+// Builds to the client side on case where we are in production (to connect front with back end)
+if (process.env.NODE_ENV === 'production') {
+  // Sets our static file
+  app.use(express.static('client/build'));
+
+  // Sets up our default index route
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
 
-// Mongo Atlas custom URL to mongoose connection
-const URL = process.env.URL;
-
-mongoose
-  .connect(URL, {
-    dbName: "authentication",
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log("Now connected to MongoDB!"))
-  .catch(err => console.error("Something went wrong", err));
-
-// ... other app.use middleware
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-// parse request body as json
-app.use(express.json());
-
-// using custom route
-app.use("/api/users", users);
-app.use("/api/auth", auth);
-
-// render index for all other paths
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-let port = process.env.PORT || 8000;
-app.listen(port, () => {
-  console.log(`Harvesthru app is running on port ${port}`);
-});
-
-/* https
-  .createServer(
-    {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert")
-    },
-    app
-  )
-*/
+// Connect to Designated port
+const PORT = process.env.PORT || 8000;
+// Listen on created port to start the server
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

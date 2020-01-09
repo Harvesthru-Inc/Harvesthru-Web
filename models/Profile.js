@@ -1,5 +1,6 @@
+// Install Neccessary dependencies
 const mongoose = require('mongoose');
-
+// Schema we will use to format Data when we enter in DB
 const ProfileSchema = new mongoose.Schema({
     User: {
         type: mongoose.Schema.Types.ObjectId,
