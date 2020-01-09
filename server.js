@@ -1,4 +1,7 @@
 // Install Neccessary dependencies
+const users = require('./routes/api/users')
+const auth = require('./routes/api/auth')
+const profile = require('./routes/api/profile')
 const express = require('express');
 const path = require('path');
 const connectDB = require('./config/db');
@@ -12,9 +15,9 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Define Routes
-app.use('/api/users', require('./routes/api/users'));
-app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/users',users);
+app.use('/api/auth',auth);
+app.use('/api/profile',profile);
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
