@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({
-    User: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'user'
     },
 
     joined: {
-        type: Number, 
-        default: (new Date()).getTime() 
+        type: Date, 
+        default: Date.now
     },
     followers: {
         type: Number
@@ -29,9 +29,10 @@ const ProfileSchema = new mongoose.Schema({
     reviews: {
         type: Number
     },
-    // TODO, need to implement item schema
-    // items: [{
-    //     type: ObjectId, ref: 'Item'
-    // }]
+    
+    items: {
+        type: [String],
+        required: true
+    },
 });
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
