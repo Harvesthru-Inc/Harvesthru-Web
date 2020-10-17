@@ -45,6 +45,7 @@ class Profile extends React.Component {
     return links.map(link => {
       return (
         <GridNavItem
+          key={(Math.random())}
           onClick={() => {
             link.callback(link.text);
           }}
@@ -132,7 +133,7 @@ class Profile extends React.Component {
               <SeeAll>See All ></SeeAll>
               <GridContainer className="scroll">
                 {[1, 3, 42, 4, 2, 4, 2, 4, 2, 3].map(i => {
-                  return <GridItemContainer></GridItemContainer>;
+                  return <GridItemContainer key={(Math.random())}></GridItemContainer>;
                 })}
               </GridContainer>
             </SectionsContainer>
